@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/MCA/3rd SEM/LAB/Android-Programming/lab5/president/app/src/main/res/layout/activity_fullscreen.xml" value="0.17552083333333332" />
+        <entry key="..\:/MCA/3rd SEM/LAB/Android-Programming/lab5/president/app/src/main/res/layout/activity_gallery.xml" value="0.17552083333333332" />
+        <entry key="..\:/MCA/3rd SEM/LAB/Android-Programming/lab5/president/app/src/main/res/layout/activity_main.xml" value="0.17552083333333332" />
+        <entry key="..\:/MCA/3rd SEM/LAB/Android-Programming/lab5/president/app/src/main/res/layout/activity_president_page.xml" value="0.17552083333333332" />
+        <entry key="..\:/MCA/3rd SEM/LAB/Android-Programming/lab5/president/app/src/main/res/layout/fragment_abdul_kalam.xml" value="0.17552083333333332" />
+        <entry key="..\:/MCA/3rd SEM/LAB/Android-Programming/lab5/president/app/src/main/res/layout/fragment_droupadi.xml" value="0.17552083333333332" />
+        <entry key="..\:/MCA/3rd SEM/LAB/Android-Programming/lab5/president/app/src/main/res/layout/fragment_pranam.xml" value="0.17552083333333332" />
+        <entry key="..\:/MCA/3rd SEM/LAB/Android-Programming/lab5/president/app/src/main/res/layout/fragment_ramnath.xml" value="0.17552083333333332" />
+        <entry key="..\:/MCA/3rd SEM/LAB/Android-Programming/lab5/president/app/src/main/res/menu/menu.xml" value="0.17552083333333332" />
+        <entry key="..\:/Users/kpall/AndroidStudioProjects/president/app/src/main/res/layout/activity_fullscreen.xml" value="0.17552083333333332" />
+        <entry key="..\:/Users/kpall/AndroidStudioProjects/president/app/src/main/res/layout/activity_gallery.xml" value="0.17552083333333332" />
+        <entry key="..\:/Users/kpall/AndroidStudioProjects/president/app/src/main/res/layout/activity_main.xml" value="0.17552083333333332" />
+        <entry key="..\:/Users/kpall/AndroidStudioProjects/president/app/src/main/res/layout/activity_president_page.xml" value="0.17552083333333332" />
+        <entry key="..\:/Users/kpall/AndroidStudioProjects/president/app/src/main/res/layout/fragment_abdul_kalam.xml" value="0.17552083333333332" />
+        <entry key="..\:/Users/kpall/AndroidStudioProjects/president/app/src/main/res/layout/fragment_droupadi.xml" value="0.17552083333333332" />
+        <entry key="..\:/Users/kpall/AndroidStudioProjects/president/app/src/main/res/layout/fragment_pranam.xml" value="0.16145833333333334" />
+        <entry key="..\:/Users/kpall/AndroidStudioProjects/president/app/src/main/res/layout/fragment_prathiba.xml" value="0.16145833333333334" />
+        <entry key="..\:/Users/kpall/AndroidStudioProjects/president/app/src/main/res/layout/fragment_ramnath.xml" value="0.17552083333333332" />
+        <entry key="..\:/Users/kpall/AndroidStudioProjects/president/app/src/main/res/menu/menu.xml" value="0.17552083333333332" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

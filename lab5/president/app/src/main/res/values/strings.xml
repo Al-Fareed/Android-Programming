@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">president</string>
+    <string-array name="array_list">
+        <item>ABDUL KALAM</item>
+        <item>PRATHIBA PATIL</item>
+        <item>PRANAB MUKHERJEE</item>
+        <item>RAMNATH KOVIND</item>
+        <item>DROUPADI MURMU</item>
+
+    </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

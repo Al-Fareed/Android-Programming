@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:gravity="center"
+    android:orientation="vertical"
+    >
+
+    <Button
+
+        android:id="@+id/b1"
+        android:layout_width="180dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="20dp"
+        android:text="1.Date Time"
+        >
+
+    </Button>
+
+    <Button
+        android:id="@+id/b2"
+        android:layout_width="180dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="20dp"
+        android:text="2.Progress bar">
+
+    </Button>
+    <Button
+        android:id="@+id/b3"
+        android:layout_width="180dp"
+        android:layout_height="70dp"
+        android:layout_marginBottom="20dp"
+        android:text="3.Floating action button"
+        >
+
+    </Button>
+
+    <Button
+        android:id="@+id/b4"
+        android:layout_width="180dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="20dp"
+        android:text="4.Sub menu">
+    </Button>
+
+
+
+
+
+</LinearLayout>

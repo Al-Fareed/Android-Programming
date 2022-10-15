@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+
+    <Button
+        android:id="@+id/btnDate"
+        android:onClick="redirectDatePicker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="125dp"
+        android:layout_centerHorizontal="true"
+        android:layout_weight="1"
+        android:text="DATE PICKER" />
+
+    <Button
+        android:id="@+id/btnTime"
+        android:onClick="redirectTimePicker"
+        android:layout_below="@+id/btnDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="125dp"
+        android:layout_centerHorizontal="true"
+        android:layout_weight="1"
+        android:text="TIME PICKER" />
+
+    <Button
+        android:id="@+id/btnActionBtn"
+        android:onClick="redirectFloatingActionBtn"
+        android:layout_below="@+id/btnTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="125dp"
+        android:layout_centerHorizontal="true"
+        android:layout_weight="1"
+        android:text="FLOATING ACTION BUTTON" />
+
+    <Button
+        android:id="@+id/btnProgressBar"
+        android:onClick="redirectProgressBar"
+        android:layout_below="@+id/btnActionBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="125dp"
+        android:layout_centerHorizontal="true"
+        android:layout_weight="1"
+        android:text="Progress BAR" />
+
+    <Button
+        android:id="@+id/btnSubMenu"
+        android:onClick="redirectSubMenu"
+        android:layout_below="@+id/btnProgressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="125dp"
+        android:layout_centerHorizontal="true"
+        android:layout_weight="1"
+        android:text="SUB MENU" />
+
+
+</RelativeLayout>
+
+

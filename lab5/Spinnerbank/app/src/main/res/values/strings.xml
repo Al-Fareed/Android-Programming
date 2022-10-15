@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Spinnerbank</string>
+    <string name="bank">Select a Bank</string>
+    <string name="ifscsbi">IFSC:SBIN0004426</string>
+    <string name="ifschdfc">IFSC:HDFC0001572</string>
+    <string name="ifscicici">IFSC:ICIC0000072</string>
+    <string name="ifsccanara">IFSC:CNRB00030855</string>
+</resources>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:orientation="vertical"
+    android:layout_gravity="center">
+
+    <LinearLayout
+        android:layout_width="350dp"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        android:layout_marginTop="50dp"
+        android:layout_gravity="center">
+        <TextView
+            android:layout_width="60dp"
+            android:layout_height="50dp"
+            android:text="Name"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/textName"
+            android:layout_width="290dp"
+            android:layout_height="50dp"
+            android:hint="Enter your Name"
+            />
+    </LinearLayout>
+
+    <RadioGroup
+        android:layout_width="350dp"
+        android:layout_marginTop="10dp"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:id="@+id/genderGroup"
+        >
+        <RadioButton
+            android:id="@+id/rmale"
+            android:layout_width="150dp"
+            android:layout_height="match_parent"
+            android:text="Male" />
+
+        <RadioButton
+            android:id="@+id/rfemale"
+            android:layout_width="150dp"
+            android:layout_height="match_parent"
+            android:text="Female" />
+    </RadioGroup>
+
+
+    <LinearLayout
+        android:layout_width="350dp"
+        android:layout_height="60dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp">
+        <CheckBox
+            android:layout_width="100dp"
+            android:text="Sports"
+            android:id="@+id/sportsCheck"
+            android:layout_height="match_parent" />
+
+        <CheckBox
+            android:layout_width="100dp"
+            android:text="Art"
+            android:id="@+id/artCheck"
+            android:layout_height="match_parent" />
+
+        <CheckBox
+            android:id="@+id/socialCheck"
+            android:layout_width="120dp"
+            android:text="Social Work"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+
+    <Button
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:text="Reset"
+        android:id="@+id/submitBtn"
+        />
+
+
+</LinearLayout>

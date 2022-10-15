@@ -1,0 +1,463 @@
+MainActivity
+
+package com.example.userinfo;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.TextView;
+import android.widget.Toast;
+import android.widget.ToggleButton;
+
+public class MainActivity extends AppCompatActivity{
+    private ToggleButton togBtn;
+    private EditText userName;
+    private CheckBox sports, arts, social_work;
+    String  hobby = "", gender = "",uname="";
+    private RadioButton male, female;
+
+
+    private Boolean sportsChecked = false, artsChecked = false,social_checked = false;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        userName = findViewById(R.id.name);
+        sports = findViewById(R.id.checkBox);
+        arts = findViewById(R.id.checkBox2);
+        social_work = findViewById(R.id.checkBox3);
+
+        male = findViewById(R.id.radioButton);
+        female = findViewById(R.id.radioButton2);
+        togBtn = findViewById(R.id.togBtn);
+        Intent redirect=new Intent(MainActivity.this,DisplayDetails.class);
+
+        male.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(userName.getText().toString().equals("")){
+                    Toast.makeText(MainActivity.this,"Enter the name",Toast.LENGTH_SHORT).show();
+                }else {
+                    uname=userName.getText().toString();
+
+                    gender = "Male";
+                    redirect.putExtra("name",uname);
+                    redirect.putExtra("gender",gender);
+                    Toast.makeText(MainActivity.this, uname + " is a "+gender,Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        female.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(userName.getText().toString().equals("")){
+                    Toast.makeText(MainActivity.this,"Enter the name",Toast.LENGTH_SHORT).show();
+                }else {
+                    uname=userName.getText().toString();
+                    gender = "Female";
+                    Toast.makeText(MainActivity.this, uname + " is a "+gender,Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        sports.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if(sports.isChecked()){
+                    if(userName.getText().toString().equals("")){
+                        Toast.makeText(MainActivity.this, "Enter the name", Toast.LENGTH_SHORT).show();
+                    }else {
+                        uname = userName.getText().toString();
+                        Toast.makeText(MainActivity.this, uname + " likes sports", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
+        });
+
+        arts.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if(arts.isChecked()){
+                    if(userName.getText().toString().equals("")){
+                        Toast.makeText(MainActivity.this, "Enter the name", Toast.LENGTH_SHORT).show();
+                    }else {
+                        uname = userName.getText().toString();
+                        Toast.makeText(MainActivity.this, uname + " likes arts", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
+        });
+
+        social_work.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if(social_work.isChecked()){
+                    if(userName.getText().toString().equals("")){
+                        Toast.makeText(MainActivity.this, "Enter the name", Toast.LENGTH_SHORT).show();
+                    }else {
+                        uname = userName.getText().toString();
+                        Toast.makeText(MainActivity.this, uname + " likes social work", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
+        });
+
+          togBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String info=(String) togBtn.getText();
+                if(info.equals("Submit"))
+                {
+                    userName.setText("");
+                    male.setChecked(false);
+                    female.setChecked(false);
+                    sports.setChecked(false);
+                    arts.setChecked(false);
+                    social_work.setChecked(false);
+
+                }
+                else if(info.equals("Reset"))
+                {
+                    hobby = "";
+                    uname=userName.getText().toString();
+                    if(uname.equals("")){
+                        Toast.makeText(MainActivity.this,"Enter a name",Toast.LENGTH_SHORT).show();
+                    }else if(!sports.isChecked() && !arts.isChecked() && !social_work.isChecked()){
+                        Toast.makeText(MainActivity.this,"Select a hobby",Toast.LENGTH_SHORT).show();
+                    }else if(!male.isChecked() && !female.isChecked()){
+                        Toast.makeText(MainActivity.this, "Select A Gender", Toast.LENGTH_SHORT).show();
+                    }else{
+                        if(sports.isChecked()){
+                            sportsChecked = true;
+                        }else{
+                            sportsChecked = false;
+                        }
+                        if(arts.isChecked()){
+                            artsChecked = true;
+                        }else{
+                            artsChecked = false;
+                        }
+                        if(social_work.isChecked()){
+                            social_checked = true;
+                        }else{
+                            social_checked = false;
+                        }
+                        if(sportsChecked){
+                            hobby += " Sports";
+                            if(artsChecked){
+                                hobby += ", Arts";
+                            }
+                            if(social_checked){
+                                hobby += ", Social Work";
+                            }
+                        }else if(artsChecked)
+                        {
+                            hobby += " Arts";
+                            if(social_checked){
+                                hobby += ", Social Work";
+                            }
+                        }else if(social_checked) {
+                            hobby += " Social Work";
+                        }
+                        redirect.putExtra("info",hobby);
+                        startActivity(redirect);
+                        Toast.makeText(MainActivity.this,uname + " is a "+ gender +"\n" + uname + " likes" + hobby,Toast.LENGTH_SHORT).show();
+                    }
+
+                }
+            }
+
+        });
+
+
+        }
+
+    }
+
+
+
+
+
+
+
+Activity_main.xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:ignore="UselessParent">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="45dp"
+            android:layout_marginTop="40dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="78dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/name"
+                android:textAlignment="center" />
+
+            <EditText
+                android:id="@+id/name"
+                android:layout_width="235dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:autofillHints=""
+                android:ems="10"
+                android:inputType="text"
+                tools:ignore="LabelFor,TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="120dp"
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal"
+            tools:ignore="RtlHardcoded">
+
+            <RadioGroup
+                android:id="@+id/radio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/radioButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="25dp"
+                    android:text="@string/male" />
+
+                <RadioButton
+                    android:id="@+id/radioButton2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/female" />
+            </RadioGroup>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="80dp"
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal"
+            android:textAlignment="center">
+
+            <CheckBox
+                android:id="@+id/checkBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="5dp"
+                android:layout_weight="1"
+                android:text="@string/sports" />
+
+            <CheckBox
+                android:id="@+id/checkBox2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="5dp"
+                android:layout_weight="1"
+                android:text="@string/arts" />
+
+            <CheckBox
+                android:id="@+id/checkBox3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/social_work" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="165dp"
+            android:layout_marginTop="15dp"
+            android:orientation="vertical">
+
+
+
+            <ToggleButton
+                android:id="@+id/togBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textOff="Submit"
+                android:textOn="Reset"></ToggleButton>
+
+        </LinearLayout>
+
+    </LinearLayout>
+</RelativeLayout>
+
+
+
+
+
+
+
+MainActivity2.java
+
+package com.example.userinfo;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+public class DisplayDetails extends AppCompatActivity {
+    private TextView textView1, textView2;
+    private ImageView img;
+    private Button returnBtn;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_display_details);
+
+        textView1 = findViewById(R.id.textView3);
+        textView2 = findViewById(R.id.textView4);
+        img = findViewById(R.id.imageView);
+        returnBtn = findViewById(R.id.backBtn);
+
+        img.setBackground(getResources().getDrawable(R.drawable.ironman));
+
+        Intent getVal=getIntent();
+        String hobby=getVal.getStringExtra("info");
+        String uname=getVal.getStringExtra("name");
+        String gender=getVal.getStringExtra("gender");
+
+
+        textView1.setText("Hello "+uname);
+        textView2.setText(uname+" is a "+gender+"\n"+uname + " likes" + hobby);
+        returnBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent backBtn=new Intent(DisplayDetails.this,MainActivity.class);
+                startActivity(backBtn);
+            }
+        });
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+Activity_main2.xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DisplayDetails">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:ignore="UselessParent">
+    <LinearLayout
+        android:layout_width="130dp"
+        android:layout_height="140dp"
+        android:layout_marginLeft="142dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:contentDescription="@string/profile_picture"
+            android:visibility="visible"
+            tools:ignore="ImageContrastCheck"
+            tools:srcCompat="@tools:sample/avatars" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            android:fontFamily="casual"
+            android:text=""
+            android:textColor="@color/black"
+            android:textFontWeight="400"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="30dp"
+            android:fontFamily="casual"
+            android:text=""
+            android:textColor="@color/black"
+            android:textFontWeight="400"
+            android:textSize="20dp" />
+        <Button
+            android:text="Return"
+            android:id="@+id/backBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="30dp"
+            android:fontFamily="casual">
+        </Button>
+    </LinearLayout>
+
+    </LinearLayout>
+</RelativeLayout>
+

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/search_item"
+        android:title="search"/>
+    <item android:id="@+id/upload_item"
+        android:title="upload"/>
+    <item android:id="@+id/copy"
+        android:title="copy">
+        <menu>
+            <item android:id="@+id/copy1"
+                android:title="copy1"/>
+            <item android:id="@+id/copy2"
+                android:title="copy2"/>
+
+        </menu>
+    </item>
+
+    <item android:id="@+id/share"
+        android:title="share"/>
+
+
+</menu>

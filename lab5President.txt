@@ -1,0 +1,557 @@
+//app name:president
+//MAinActivity.java
+package com.example.president;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.Toast;
+
+
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+    }
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()){
+            case R.id.toast:
+                Toast.makeText(getApplicationContext(),"Item Toast Selected",Toast.LENGTH_LONG).show();
+                return true;
+            case R.id.exit:
+                MainActivity.this.finish();
+                System.exit(0);
+                return true;
+            case R.id.president:
+                Intent first=new Intent(MainActivity.this,presidentPage.class);
+                startActivity(first);
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+}
+
+------------------------
+//presidentPage.java
+package com.example.president;
+import androidx.appcompat.app.AppCompatActivity;
+import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.FrameLayout;
+import android.widget.ListView;
+import android.widget.Toast;
+
+public class presidentPage extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_president_page);
+        Intent first = getIntent();
+        ListView listView = findViewById(R.id.listView1);
+        FrameLayout f1 = findViewById(R.id.frameLayout);
+        String[] listItem = getResources().getStringArray(R.array.array_list);
+        final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, android.R.id.text1, listItem);
+        listView.setAdapter(adapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                String value = adapter.getItem(position);
+                if (value.equals("ABDUL KALAM"))
+                    loadFragment(new abdulKalam());
+                else if (value.equals("PRATHIBA PATIL"))
+                    loadFragment(new prathiba());
+                else if (value.equals("PRANAB MUKHERJEE"))
+                    loadFragment(new pranam());
+                else if (value.equals("RAMNATH KOVIND"))
+                    loadFragment(new ramnath());
+                else if (value.equals("DROUPADI MURMU"))
+                    loadFragment(new droupadi());
+
+            }
+        });
+    }
+
+
+    public void loadFragment(Fragment fragment) {
+        FragmentManager fm = getFragmentManager();
+        // FragmentManager fragmentManager = getFragmentManager();
+        //FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        FragmentTransaction fragmentTransaction = fm.beginTransaction();
+        fragmentTransaction.replace(R.id.frameLayout, fragment);
+        fragmentTransaction.commit();
+    }
+}
+
+----------------------
+//abdulKalam.java
+package com.example.president;
+
+import android.os.Bundle;
+import android.app.Fragment;
+
+
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+
+public class abdulKalam extends Fragment {
+
+    View view;
+    TextView textView,textView2;
+
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        view = inflater.inflate(R.layout.fragment_abdul_kalam, container, false);
+        textView = view.findViewById(R.id.textView);
+        textView2 = view.findViewById(R.id.textView2);
+        textView.setText("A. P. J. Abdul Kalam \n 25 July 2002 – 25 July 2007");
+        textView2.setText("1981: Padma Bhushan – Government of India\n" +
+                "1990: Padma Vibhushan – Government of India\n" +
+                "1997: Bharat Ratna – Government of India");
+        return view;
+    }
+}
+
+
+
+
+----------------------
+//droupadi.java
+package com.example.president;
+
+import android.os.Bundle;
+import android.app.Fragment;
+
+
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+
+public class droupadi extends Fragment {
+
+    View view;
+    TextView textView,textView2;
+
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        view = inflater.inflate(R.layout.fragment_droupadi, container, false);
+        textView = view.findViewById(R.id.textView);
+        textView2 = view.findViewById(R.id.textView2);
+        textView.setText("Droupadi Murmu \n 25 July 2022 – PRESENT");
+        textView2.setText("ninth Governor of Jharkhand in May 2015\n nominated by the Bharatiya Janata Party (BJP) " +
+                " presidency of India in the 2022 elections.");
+        return view;
+    }
+}
+
+
+
+
+--------------
+//pranam.java
+package com.example.president;
+
+import android.os.Bundle;
+import android.app.Fragment;
+
+
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+
+public class pranam extends Fragment {
+
+    View view;
+    TextView textView,textView2;
+
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        view = inflater.inflate(R.layout.fragment_pranam, container, false);
+        textView = view.findViewById(R.id.textView);
+        textView2 = view.findViewById(R.id.textView2);
+        textView.setText("Pranab Mukherjee \n 25 July 2012 – 25 July 2017");
+        textView2.setText( "chairman and president of the Rabindra Bharati University\n"+
+                " trustee of the Bangiya Sahitya Parishad and the Bidhan Memorial Trust.");
+        return view;
+    }
+}
+
+
+
+
+-----------------
+//prathiba.java
+package com.example.president;
+
+import android.os.Bundle;
+import android.app.Fragment;
+
+
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+
+public class prathiba extends Fragment {
+
+    View view;
+    TextView textView,textView2;
+
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        view = inflater.inflate(R.layout.fragment_prathiba, container, false);
+        textView = view.findViewById(R.id.textView);
+        textView2 = view.findViewById(R.id.textView2);
+        textView.setText("Pratibha Patil \n 25 July 2007 – 25 July 2012");
+        textView2.setText("1983–85  Cabinet Minister, Civil Supplies and Social Welfare, Government of Maharashtra\n" +
+                "1986–1988  Deputy Chairman, Rajya Sabha\n" +
+                "1986–88  Chairman, Committee of Privileges\n"
+                );
+        return view;
+    }
+}
+
+
+
+
+-----------------
+//ramnath.java
+package com.example.president;
+
+import android.os.Bundle;
+import android.app.Fragment;
+
+
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+
+public class ramnath extends Fragment {
+
+    View view;
+    TextView textView,textView2;
+
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        view = inflater.inflate(R.layout.fragment_ramnath, container, false);
+        textView = view.findViewById(R.id.textView);
+        textView2 = view.findViewById(R.id.textView2);
+        textView.setText("Ram Nath Kovind\n 25 July 2017 – 25 July 2022");
+        textView2.setText("26th Governor of Bihar from 2015 to 2017 \n Member of Parliament, Rajya Sabha from 1994 to 2006 \n" +
+                "lawyer for 16 years  until 1993.");
+        return view;
+    }
+}
+
+
+
+
+---------------------
+//menu.xml
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+        <item android:id="@+id/toast"
+            android:title="Toast"/>
+        <item android:id="@+id/exit"
+            android:title="Exit"/>
+        <item android:id="@+id/president"
+            android:title="President"/>
+
+</menu>
+------------------
+//strings.xml
+<resources>
+    <string name="app_name">president</string>
+    <string-array name="array_list">
+        <item>ABDUL KALAM</item>
+        <item>PRATHIBA PATIL</item>
+        <item>PRANAB MUKHERJEE</item>
+        <item>RAMNATH KOVIND</item>
+        <item>DROUPADI MURMU</item>
+
+    </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
+--------------------
+//MainActivity.xml
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Menu Option"
+        android:textSize="20dp"
+        android:textColor="@color/purple_500"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+-------------------
+//presidentPage.xml
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".presidentPage">
+
+    <ListView
+        android:id="@+id/listView1"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:listSelector="@color/teal_200"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.028" />
+
+    <FrameLayout
+        android:id="@+id/frameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="470dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+----------------
+//abdulKalam.xml
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".abdulKalam">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="300dp"
+        android:layout_height="100dp"
+        android:textColor="@color/teal_200"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="350dp"
+        android:layout_height="200dp"
+        android:textColor="@color/teal_200"
+        android:textSize="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.737"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.845" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+------------
+//droupadi.xml
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".droupadi">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="300dp"
+        android:layout_height="100dp"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="350dp"
+        android:layout_height="200dp"
+        android:textColor="@color/white"
+        android:textSize="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.737"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.845" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+---------------
+//pranam.xml
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".pranam">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="300dp"
+        android:layout_height="100dp"
+        android:textColor="@color/purple_700"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="350dp"
+        android:layout_height="200dp"
+        android:textColor="@color/purple_700"
+        android:textSize="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.737"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.845" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+----------------
+//prathiba.xml
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".prathiba">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="300dp"
+        android:layout_height="100dp"
+        android:textColor="@color/teal_200"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="350dp"
+        android:layout_height="200dp"
+        android:textColor="@color/teal_200"
+        android:textSize="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.737"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.845" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+------------
+//ramnath.xml
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ramnath">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="300dp"
+        android:layout_height="100dp"
+        android:textColor="@color/teal_200"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="350dp"
+        android:layout_height="200dp"
+        android:textColor="@color/teal_200"
+        android:textSize="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.737"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.845" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+------------------
