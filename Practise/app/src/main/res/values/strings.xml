@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">DataBase Application</string>
+    <string name="instructions"> Enter details below </string>
+</resources>
